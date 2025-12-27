@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="max-width:800px; margin:40px auto;">
+    <h2 style="color:#002664;">{{ job.title }}</h2>
+    <p><strong>Organisation :</strong> {{ job.organization }}</p>
+    <p><strong>Ville :</strong> {{ job.city|default:"Non spécifiée" }}</p>
+    <p><strong>Date limite :</strong> {{ job.deadline|default:"Non spécifiée" }}</p>
+    
+    <h3>Description</h3>
+    <p style="white-space: pre-line;">{{ job.description }}</p>
+    
+    {% if user.is_authenticated %}
+        <a href="{% url 'apply_job' job.pk %}" style="background:#002664; color:white; padding:12px 25px; text-decoration:none; border-radius:5px; font-size:1.1em;">
+            Postuler maintenant
+        </a>
+    {% else %}
+        <p style="background:#fff3cd; padding:15px; border-radius:5px;">
+            <a href="/users/login/">Connectez-vous</a> ou <a href="/users/signup/">inscrivez-vous</a> pour postuler à cette offre.
+        </p>
+    {% endif %}
+    
+    <a href="{% url 'job_list' %}" style="display:block; margin-top:30px;">← Retour à la liste des emplois</a>
+</div>
+{% endblock %}

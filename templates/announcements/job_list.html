@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 style="text-align:center; color:#002664;">💼 Offres d'Emploi Actuelles</h2>
+
+{% if jobs %}
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px;">
+    {% for job in jobs %}
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-left: 5px solid #002664;">
+        <h3><a href="{% url 'job_detail' job.pk %}" style="color:#002664; text-decoration:none;">{{ job.title }}</a></h3>
+        <p><strong>Organisation :</strong> {{ job.organization }}</p>
+        <p><strong>Ville :</strong> {{ job.city|default:"Non spécifiée" }}</p>
+        <p><strong>Date limite :</strong> {{ job.deadline|default:"Non spécifiée" }}</p>
+        <a href="{% url 'job_detail' job.pk %}" style="background:#002664; color:white; padding:8px 15px; text-decoration:none; border-radius:5px;">Voir détails →</a>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p style="text-align:center; font-size:1.2em;">Aucune offre d'emploi pour le moment. Revenez bientôt !</p>
+{% endif %}
+{% endblock %}

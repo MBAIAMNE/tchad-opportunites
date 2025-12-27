@@ -1,0 +1,1 @@
+web: gunicorn tchad_opportunites.wsgi:application --log-file -
