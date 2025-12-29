@@ -124,7 +124,7 @@ import os  # Ajoute cette ligne si elle n'est pas déjà en haut (regarde en hau
 # Configuration des fichiers statiques (CSS, JS, images)
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+#STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Configuration des templates (pages HTML)
