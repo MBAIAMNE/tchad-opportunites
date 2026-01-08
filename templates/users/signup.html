@@ -3,20 +3,23 @@
 {% block title %}Inscription - Tchad Opportunités{% endblock %}
 
 {% block content %}
-<h2 style="text-align:center; color:#002664;">📝 Inscription Gratuite</h2>
-<div style="max-width:400px; margin:30px auto;">
-    {% if messages %}
-        {% for message in messages %}
-            <p style="color:green; text-align:center;">{{ message }}</p>
-        {% endfor %}
-    {% endif %}
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" style="width:100%; padding:12px; background:#002664; color:white; border:none; border-radius:5px;">S'inscrire</button>
-    </form>
-    <p style="text-align:center; margin-top:20px;">
-        Déjà un compte ? <a href="{% url 'login' %}">Se connecter</a>
-    </p>
-</div>
+    <div style="max-width:500px; margin:40px auto; padding:30px; background:white; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
+        <h2 style="text-align:center; color:#002664;">📝 Inscription Gratuite</h2>
+        
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color:green; text-align:center; font-weight:bold;">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" style="width:100%; padding:15px; background:#002664; color:white; border:none; border-radius:8px; font-size:1.1em;">S'inscrire</button>
+        </form>
+        
+        <p style="text-align:center; margin-top:20px;">
+            Déjà un compte ? <a href="{% url 'login' %}" style="color:#002664; font-weight:bold;">Se connecter</a>
+        </p>
+    </div>
 {% endblock %}
