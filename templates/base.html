@@ -1,72 +1,86 @@
-<nav class="navbar">
-    <div class="nav-brand">Tchad Opportunités</div>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-    <div class="nav-links" id="navLinks">
-        <a href="/">Accueil</a>
-        <a href="/emplois/">Emplois</a>
-        <a href="/opportunites/">Formations & Bourses</a>
-        <a href="/contact/">Contact</a>
-        {% if user.is_authenticated %}
-            <a href="/admin/">Admin</a>
-            <a href="/users/logout/">Déconnexion ({{ user.username }})</a>
-        {% else %}
-            <a href="/users/signup/">S'inscrire</a>
-            <a href="/users/login/">Connexion</a>
-        {% endif %}
-    </div>
-</nav>
-
-<style>
-    .navbar {
-        background: #002664;
-        padding: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .nav-brand {
-        color: white;
-        font-size: 1.5em;
-        font-weight: bold;
-    }
-    .nav-links {
-        display: flex;
-        gap: 20px;
-    }
-    .nav-links a {
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-    }
-    .hamburger {
-        display: none;
-        color: white;
-        font-size: 1.8em;
-        cursor: pointer;
-    }
-    @media (max-width: 768px) {
-        .hamburger {
-            display: block;
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Tchad Opportunités{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
         }
-        .nav-links {
-            display: none;
-            flex-direction: column;
-            position: absolute;
-            top: 70px;
-            left: 0;
-            width: 100%;
-            background: #002664;
+        header {
+            background-color: #002664; /* Bleu du drapeau tchadien */
+            color: white;
             padding: 20px;
             text-align: center;
         }
-        .nav-links.active {
-            display: flex;
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
         }
-    }
-</style>
+        nav {
+            margin-top: 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #002664;
+            color: white;
+            margin-top: 50px;
+        }
+        @media (max-width: 768px) {
+            header h1 { font-size: 2em; }
+            nav a { display: block; margin: 10px 0; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tchad Opportunités</h1>
+        <nav>
+            <a href="{% url 'home' %}">Accueil</a>
+            <a href="{% url 'job_list' %}">Emplois</a>
+            <a href="{% url 'opportunity_list' %}">Formations & Bourses</a>
+            <a href="#">Contact</a>
+            {% if user.is_authenticated %}
+                <a href="/admin/">Admin</a>
+                <a href="{% url 'logout' %}">Déconnexion ({{ user.username }})</a>
+            {% else %}
+                <a href="{% url 'signup' %}">S'inscrire</a>
+                <a href="{% url 'login' %}">Connexion</a>
+            {% endif %}
+        </nav>
+    </header>
 
-<script>
-    function toggleMenu() {
-        document.getElementById('navLinks').classList.toggle('active');
-    }
-</script>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Tchad Opportunités - Créé par Frédéric MBAI | N'Djamena, Tchad</p>
+    </footer>
+</body>
+</html>
