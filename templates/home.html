@@ -3,175 +3,20 @@
 {% block title %}Accueil - Tchad Opportunités{% endblock %}
 
 {% block content %}
-<header class="hero">
-    <div class="hero-content">
-        <h1>🇹🇩 Tchad Opportunités 🇹🇩</h1>
-        <p class="hero-subtitle">La 1ère plateforme qui regroupe toutes les offres d'emploi, formations et bourses au Tchad</p>
-        <p class="hero-text">Plus besoin de chercher partout – tout est ici, gratuit et à jour !</p>
-        <div class="hero-buttons">
-            <a href="{% url 'job_list' %}" class="btn-large">Voir les Emplois</a>
-            <a href="{% url 'opportunity_list' %}" class="btn-large secondary">Formations & Bourses</a>
-        </div>
+    <div style="max-width:800px; margin:40px auto; padding:20px; background:white; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
+        <h2 style="text-align:center; color:#002664;">Bienvenue sur Tchad Opportunités</h2>
+        <p style="font-size:1.2em; text-align:center;">La plateforme qui regroupe toutes les offres d'emploi, formations, bourses et appels à projets au Tchad.</p>
+        
+        <p>Plus besoin de chercher sur WhatsApp, Facebook ou ailleurs. Tout est ici, clair et à jour.</p>
+        
+        <h3>Ce que vous trouverez ici :</h3>
+        <ul style="font-size:1.1em;">
+            <li>Offres d'emploi (ONG, entreprises, administrations)</li>
+            <li>Formations gratuites et payantes</li>
+            <li>Bourses d'études</li>
+            <li>Appels à projets et concours</li>
+        </ul>
+        
+        <p style="text-align:center; font-weight:bold;"><strong>Inscrivez-vous ou connectez-vous pour postuler facilement !</strong></p>
     </div>
-</header>
-
-<section class="features">
-    <h2>Pourquoi choisir Tchad Opportunités ?</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>💼 Emplois</h3>
-            <p>Offres d'ONG, entreprises, administrations – stages et emplois permanents</p>
-        </div>
-        <div class="card">
-            <h3>📚 Formations & Bourses</h3>
-            <p>Formations gratuites, bourses locales/internationales, appels à projets</p>
-        </div>
-        <div class="card">
-            <h3>📱 100% Mobile</h3>
-            <p>Fonctionne parfaitement sur tous les téléphones, même avec faible connexion</p>
-        </div>
-        <div class="card">
-            <h3>🚀 Gratuit & Simple</h3>
-            <p>Inscription rapide, postuler en 1 clic, mises à jour quotidiennes</p>
-        </div>
-    </div>
-</section>
-
-<section class="creator-section">
-    <div class="creator-content">
-        <img src="https://i.ibb.co/0YZpY7K/frederic-mbai-tchad-opportunites.jpg" alt="Frédéric MBAI - Créateur de Tchad Opportunités" class="creator-photo">
-        <div class="creator-text">
-            <h3>Créé avec ❤️ par Frédéric MBAI</h3>
-            <p>Développeur passionné et engagé pour le développement numérique au Tchad.</p>
-            <p>Objectif : connecter les jeunes tchadiens aux opportunités d'emploi, de formation et d'entrepreneuriat.</p>
-            <p>Contact : fredmbaiamne@gmail.com</p>
-        </div>
-    </div>
-</section>
-
-<style>
-    .hero {
-        background: linear-gradient(rgba(0,38,100,0.7), rgba(255,215,0,0.7)), url('https://media.istockphoto.com/id/1394347226/photo/confident-young-african-businesswoman-shaking-hands-with-a-colleague-in-an-office.jpg?s=612x612&w=0&k=20&c=50bS5ONtlykom8ATko_zL-wdY7XDjIrspD1VlJFvySQ=') center/cover no-repeat;
-        color: white;
-        text-align: center;
-        padding: 100px 20px;
-        min-height: 80vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .hero-content {
-        max-width: 800px;
-    }
-    .hero h1 {
-        font-size: 3em;
-        margin-bottom: 20px;
-    }
-    .hero-subtitle {
-        font-size: 1.8em;
-        margin-bottom: 20px;
-    }
-    .hero-text {
-        font-size: 1.3em;
-        margin-bottom: 40px;
-    }
-    .hero-buttons {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    .btn-large {
-        padding: 16px 32px;
-        background: white;
-        color: #002664;
-        text-decoration: none;
-        border-radius: 50px;
-        font-weight: bold;
-        font-size: 1.2em;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        transition: 0.3s;
-    }
-    .btn-large:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    }
-    .btn-large.secondary {
-        background: #FFD700;
-        color: #002664;
-    }
-    .features {
-        padding: 60px 20px;
-        text-align: center;
-        background: #f8f9fa;
-    }
-    .features h2 {
-        color: #002664;
-        margin-bottom: 40px;
-        font-size: 2.5em;
-    }
-    .cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    .card {
-        background: white;
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        border-left: 5px solid #002664;
-    }
-    .card h3 {
-        color: #002664;
-        margin-bottom: 15px;
-    }
-    .creator-section {
-        background: #f8f9fa;
-        padding: 60px 20px;
-        text-align: center;
-    }
-    .creator-content {
-        max-width: 800px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 40px;
-        flex-wrap: wrap;
-    }
-    .creator-photo {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 5px solid #002664;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
-    .creator-text {
-        text-align: left;
-        max-width: 500px;
-    }
-    .creator-text h3 {
-        color: #002664;
-        font-size: 1.8em;
-        margin-bottom: 15px;
-    }
-    .creator-text p {
-        color: #555;
-        margin-bottom: 10px;
-        font-size: 1.1em;
-    }
-    @media (max-width: 768px) {
-        .creator-content {
-            flex-direction: column;
-            text-align: center;
-        }
-        .creator-text {
-            text-align: center;
-        }
-    }
-</style>
 {% endblock %}
