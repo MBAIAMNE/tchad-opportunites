@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from announcements.models import Annonce  # App : announcements (avec s), modèle : Annonce (avec e)
+from announcements.models import Annonce  # App correcte : announcements (avec s)
 
 def home(request):
     return render(request, 'home.html')
