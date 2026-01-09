@@ -3,135 +3,159 @@
 {% block title %}Accueil - Tchad Opportunités{% endblock %}
 
 {% block content %}
-<div class="hero-section">
-    <div class="hero-overlay">
-        <div class="hero-text">
-            <h1>🇹🇩 Tchad Opportunités</h1>
-            <p class="lead">La plateforme n°1 pour trouver emplois, formations, bourses et appels à projets au Tchad</p>
-            <div class="hero-actions">
-                <a href="{% url 'job_list' %}" class="btn-hero primary">Découvrir les Emplois</a>
-                <a href="{% url 'opportunity_list' %}" class="btn-hero secondary">Formations & Bourses</a>
-            </div>
+<div class="hero">
+    <div class="hero-content">
+        <h1>🇹🇩 Tchad Opportunités</h1>
+        <p class="lead">La plateforme n°1 pour emplois, formations, bourses et appels à projets au Tchad</p>
+        
+        <!-- Barre de recherche -->
+        <form action="{% url 'search' %}" method="get" class="search-bar">
+            <input type="text" name="q" placeholder="Rechercher : bourse master, stage N'Djamena, UNICEF..." required>
+            <button type="submit">Rechercher</button>
+        </form>
+
+        <!-- Boutons catégories -->
+        <div class="categories-home">
+            <a href="{% url 'job_list' %}" class="cat-btn">Emplois & Stages</a>
+            <a href="{% url 'formation_list' %}" class="cat-btn">Formations & Bourses</a>
+            <a href="{% url 'stage_list' %}" class="cat-btn">Stages</a>
+            <a href="{% url 'appel_list' %}" class="cat-btn">Appels d’offres</a>
         </div>
     </div>
 </div>
 
-<div class="features-section">
-    <div class="container">
-        <h2 class="section-title">Pourquoi Tchad Opportunités ?</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">💼</div>
-                <h3>Emplois de qualité</h3>
-                <p>Offres vérifiées d'ONG, entreprises et administrations publiques</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📚</div>
-                <h3>Formations & Bourses</h3>
-                <p>Opportunités gratuites ou financées pour développer vos compétences</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📱</div>
-                <h3>100% Mobile</h3>
-                <p>Accès facile depuis n'importe quel téléphone, même avec connexion faible</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🚀</div>
-                <h3>Gratuit & Simple</h3>
-                <p>Inscription en 30 secondes, postuler en 1 clic</p>
-            </div>
+<div class="features">
+    <h2>Pourquoi Tchad Opportunités ?</h2>
+    <div class="features-grid">
+        <div class="feature">
+            <h3>💼 Emplois de qualité</h3>
+            <p>Offres vérifiées d'ONG, entreprises et administrations</p>
+        </div>
+        <div class="feature">
+            <h3>📚 Formations & Bourses</h3>
+            <p>Opportunités gratuites ou financées pour développer vos compétences</p>
+        </div>
+        <div class="feature">
+            <h3>📱 100% Mobile</h3>
+            <p>Accès facile depuis n'importe quel téléphone</p>
+        </div>
+        <div class="feature">
+            <h3>🚀 Gratuit & Simple</h3>
+            <p>Inscription en 30 secondes, postuler en 1 clic</p>
+        </div>
+    </div>
+</div>
+
+<div class="testimonials">
+    <h2>Ils ont réussi grâce à Tchad Opportunités</h2>
+    <div class="test-grid">
+        <div class="test-card">
+            <p>"J'ai trouvé un stage à l'UNICEF grâce à cette plateforme. Merci !"</p>
+            <strong>– Amina, N'Djamena</strong>
+        </div>
+        <div class="test-card">
+            <p>"Bourse Campus France obtenue en suivant les annonces ici."</p>
+            <strong>– Moussa, Moundou</strong>
+        </div>
+        <div class="test-card">
+            <p>"Premier emploi dans une ONG locale – tout a commencé ici."</p>
+            <strong>– Fatimé, Abéché</strong>
         </div>
     </div>
 </div>
 
 <style>
-    .hero-section {
-        background: linear-gradient(rgba(0,38,100,0.8), rgba(255,215,0,0.8)), url('https://media.istockphoto.com/id/1435220822/photo/african-american-software-developer.jpg?s=612x612&w=0&k=20&c=JESGRQ2xqRH9ZcJzvZBHZIZKVY8MDejBSOfxeM-i5e4=') center/cover no-repeat;
-        height: 80vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
+    .hero {
+        background: linear-gradient(rgba(0,38,100,0.8), rgba(255,215,0,0.8)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
         color: white;
+        text-align: center;
+        padding: 120px 20px;
     }
-    .hero-text h1 {
+    .hero-content h1 {
         font-size: 3.5em;
         margin-bottom: 20px;
     }
     .lead {
-        font-size: 1.8em;
+        font-size: 1.6em;
         margin-bottom: 40px;
-        max-width: 800px;
     }
-    .hero-actions {
+    .search-bar {
+        max-width: 700px;
+        margin: 0 auto 50px;
         display: flex;
-        gap: 20px;
-        justify-content: center;
-        flex-wrap: wrap;
     }
-    .btn-hero {
+    .search-bar input {
+        flex: 1;
+        padding: 18px;
+        border-radius: 50px 0 0 50px;
+        border: none;
+        font-size: 1.2em;
+    }
+    .search-bar button {
         padding: 18px 40px;
-        font-size: 1.3em;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: 0.3s;
-    }
-    .btn-hero.primary {
-        background: white;
-        color: #002664;
-    }
-    .btn-hero.secondary {
         background: #FFD700;
         color: #002664;
+        border: none;
+        border-radius: 0 50px 50px 0;
+        font-weight: bold;
+        cursor: pointer;
     }
-    .btn-hero:hover {
+    .categories-home {
+        margin: 50px 0;
+    }
+    .cat-btn {
+        display: inline-block;
+        padding: 18px 40px;
+        margin: 15px;
+        background: #FFD700;
+        color: #002664;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 1.3em;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        transition: 0.3s;
+    }
+    .cat-btn:hover {
         transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     }
-    .features-section {
+    .features, .testimonials {
         padding: 80px 20px;
+        text-align: center;
         background: #f8f9fa;
     }
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    .section-title {
-        text-align: center;
+    .features h2, .testimonials h2 {
         color: #002664;
         font-size: 2.8em;
         margin-bottom: 60px;
     }
-    .features-grid {
+    .features-grid, .test-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
     }
-    .feature-card {
+    .feature, .test-card {
         background: white;
-        padding: 40px 30px;
+        padding: 40px;
         border-radius: 20px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        text-align: center;
-        transition: 0.3s;
     }
-    .feature-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    }
-    .feature-icon {
-        font-size: 4em;
+    .feature h3 {
+        color: #002664;
         margin-bottom: 20px;
     }
-    .feature-card h3 {
-        color: #002664;
+    .test-card p {
+        font-style: italic;
         margin-bottom: 15px;
     }
     @media (max-width: 768px) {
-        .hero-section h1 { font-size: 2.5em; }
-        .lead { font-size: 1.4em; }
-        .hero-actions { flex-direction: column; }
+        .hero h1 { font-size: 2.5em; }
+        .lead { font-size: 1.3em; }
+        .search-bar { flex-direction: column; }
+        .search-bar input, .search-bar button { border-radius: 50px; margin-bottom: 10px; }
     }
 </style>
 {% endblock %}
