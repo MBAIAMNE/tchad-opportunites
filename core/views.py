@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from announcements.models import Annonce  # Nom correct : Annonce (avec e à la fin)
+from announcements.models import Annonce  # App : announcements (avec s), modèle : Annonce (avec e)
 
 def home(request):
     return render(request, 'home.html')
 
 def job_list(request):
-    annonces = Annonce.objects.filter(type='emploi')  # Change 'type' si ton champ s'appelle category ou autre
+    annonces = Annonce.objects.filter(type='emploi')  # Change 'type' si ton champ s'appelle category
     return render(request, 'list.html', {'annonces': annonces, 'title': 'Emplois & Stages'})
 
 def formation_list(request):
