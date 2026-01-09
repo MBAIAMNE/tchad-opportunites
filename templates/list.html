@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }} - Tchad Opportunités{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<!-- Filtres simples -->
+<div class="filters">
+    <form method="get">
+        <input type="text" name="ville" placeholder="Ville (ex: N'Djamena)" value="{{ request.GET.ville }}">
+        <input type="text" name="organisation" placeholder="Organisation (ex: UNICEF)" value="{{ request.GET.organisation }}">
+        <button type="submit">Filtrer</button>
+    </form>
+</div>
+
+<div class="annonces-list">
+    {% for annonce in annonces %}
+        <div class="annonce-card">
+            <h3>{{ annonce.title }}</h3>
+            <p><strong>Organisation :</strong> {{ annonce.organisation }}</p>
+            <p><strong>Ville :</strong> {{ annonce.ville }}</p>
+            <p><strong>Date limite :</strong> {{ annonce.date_limite }}</p>
+            <a href="{{ annonce.link }}" class="btn">Voir détails</a>
+        </div>
+    {% empty %}
+        <p>Aucune annonce pour cette catégorie pour l’instant.</p>
+    {% endfor %}
+</div>
+
+<style>
+    .filters {
+        text-align: center;
+        margin: 30px 0;
+    }
+    .filters input {
+        padding: 10px;
+        margin: 0 10px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+    .annonces-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+    .annonce-card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background: #002664;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+</style>
+{% endblock %}
