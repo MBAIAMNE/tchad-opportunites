@@ -1,21 +1,21 @@
 from django.shortcuts import render
-from announcements.models import Announcement  # Nom correct de l'app : announcements
+from announcements.models import Annonce  # Nom correct : Annonce (avec e à la fin)
 
 def home(request):
     return render(request, 'home.html')
 
 def job_list(request):
-    annonces = Announcement.objects.filter(category='emploi')  # Change 'category' en ton champ réel (ex: type ou category)
+    annonces = Annonce.objects.filter(type='emploi')  # Change 'type' si ton champ s'appelle category ou autre
     return render(request, 'list.html', {'annonces': annonces, 'title': 'Emplois & Stages'})
 
 def formation_list(request):
-    annonces = Announcement.objects.filter(category='formation')
+    annonces = Annonce.objects.filter(type='formation')
     return render(request, 'list.html', {'annonces': annonces, 'title': 'Formations & Bourses'})
 
 def stage_list(request):
-    annonces = Announcement.objects.filter(category='stage')
+    annonces = Annonce.objects.filter(type='stage')
     return render(request, 'list.html', {'annonces': annonces, 'title': 'Stages'})
 
 def appel_list(request):
-    annonces = Announcement.objects.filter(category='appel')
+    annonces = Annonce.objects.filter(type='appel')
     return render(request, 'list.html', {'annonces': annonces, 'title': 'Appels d’offres & Concours'})
